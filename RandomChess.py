@@ -78,7 +78,6 @@ def updateRules(team):
         for i in range(6):
             blackNextRules[i] = random.randint(0,5)
 
-
 def resetRules():
     global whiteRules
     global whiteNextRules
@@ -88,6 +87,14 @@ def resetRules():
     whiteNextRules = [0,1,2,3,4,5]
     blackRules = [0,1,2,3,4,5]
     blackNextRules = [0,1,2,3,4,5]
+
+def resetCaptures():
+    global blackPiecesCaptured
+    global whitePiecesCaptured
+    for i in range(len(blackPiecesCaptured)):
+        blackPiecesCaptured[i] = "e"
+    for i in range(len(whitePiecesCaptured)):
+        whitePiecesCaptured[i] = "e"
     
 def displayRules():
     blackR1 = theFont.render('Pawns move like '+ct.convertPieceNumberToName(blackRules[0])+'s             Bishops move like '+ct.convertPieceNumberToName(blackRules[3])+'s', True, (255, 255, 255))
@@ -723,6 +730,7 @@ def main():
                             if y >= 380 and y <= 506:
                                 screen = 0
                                 resetRules()
+                                resetCaptures()
                                 board = [["br","bn","bb","bq","bk","bb","bn","br"],["bp","bp","bp","bp","bp","bp","bp","bp"],["e","e","e","e","e","e","e","e"],["e","e","e","e","e","e","e","e"],["e","e","e","e","e","e","e","e"],["e","e","e","e","e","e","e","e"],["wp","wp","wp","wp","wp","wp","wp","wp"],["wr","wn","wb","wq","wk","wb","wn","wr"]]
                                 #board = [["e","e","e","e","e","e","e","e"],["e","e","bq","e","wq","e","e","e"],["e","e","e","e","e","wk","e","e"],["e","bq","e","e","e","e","e","e"],["e","e","e","e","e","e","e","e"],["e","e","e","bq","e","e","bq","e"],["e","e","e","e","e","e","e","e"],["e","e","e","e","e","e","e","e"]]
                     if x>=33 and x<=685:
