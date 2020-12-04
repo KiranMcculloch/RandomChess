@@ -20,6 +20,7 @@ mainmenu = pygame.image.load(os.path.join('images','mainmenu.png'))
 highlight = pygame.image.load(os.path.join('images','highlight.png'))
 whitewins = pygame.image.load(os.path.join('images','whitewins.png'))
 blackwins = pygame.image.load(os.path.join('images','blackwins.png'))
+turnIndic = pygame.image.load(os.path.join('images','turn.png'))
 
 wKnight = pygame.image.load(os.path.join('images','whiteKnight.png'))
 WKsmall = pygame.transform.scale(wKnight,(32,32))
@@ -692,6 +693,10 @@ def main():
             displayPieces()
             displayCapturedBlackPieces()
             displayCapturedWhitePieces()
+            if turn%2 == 0:
+                window.blit(turnIndic,(711,-10))
+            else:
+                window.blit(turnIndic,(711,358))
             if winner == 1:
                 window.blit(blackwins,(0,0))
             elif winner == 2:
@@ -744,7 +749,7 @@ def main():
                                     else:
                                         pieceLastClicked = squareClicked
                                         highlightMovesBlack(squareClicked)
-                                else:    
+                                else:
                                     if boardHighlights[boardx][boardy] == 1:
                                         moveWhitePiece(pieceLastClicked,squareClicked)
                                         turn += 1
